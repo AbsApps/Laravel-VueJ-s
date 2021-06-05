@@ -1,0 +1,3 @@
+Instalando sistema de rutas:
+
+npm install vue-router --save-dev
