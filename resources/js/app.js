@@ -24,6 +24,10 @@ Vue.component('app', require('./components/AppComponent.vue').default);
 Vue.component('posts', require('./components/PostsComponent.vue').default);
 Vue.component('InfiniteLoading', require('vue-infinite-loading'));
 
+
+import router from './routes'
+
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -31,5 +35,6 @@ Vue.component('InfiniteLoading', require('vue-infinite-loading'));
  */
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+    router
 });

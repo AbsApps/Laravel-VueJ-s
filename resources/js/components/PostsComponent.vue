@@ -1,29 +1,34 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                
-                <div class="card mb-3 mt-3" v-for="item in list">
-                    
+    
+    <div class="row justify-content-center">
+        <div class="col-md-12">
             
-                    <a class="card-header" v-text="item.title"  v-bind:href="item.slug"></a>
+            <div class="card mb-3 mt-3" v-for="item in list">
                     
-                    
-                    <div class="card-body">
-                        <span>{{item.id}}</span>
-                        <p class="card-text" v-text="item.body"></p>
-                    </div>
+                <!-- <a class="card-header" v-text="item.title"  v-bind:href="item.slug"></a> -->
+                
+                <router-link 
+                    class="card-header"
+                    :to="{name:'post', params: {slug: item.slug}}"
+                    v-text="item.title"
+                ></router-link>
+                
+                <div class="card-body">
+                    <span>{{item.id}}</span>
+                    <p class="card-text" v-text="item.excerpt"></p>
                 </div>
 
-                <infinite-loading @infinite="infiniteHandler">
-                    <div slot="no-more">--</div>
-                    <div slot="spinner">Cargando...</div>
-                    <div slot="no-result">Si resultados</div>
-                </infinite-loading>
-
             </div>
+
+            <infinite-loading @infinite="infiniteHandler">
+                <div slot="no-more">--</div>
+                <div slot="spinner">Cargando...</div>
+                <div slot="no-result">Si resultados</div>
+            </infinite-loading>
+
         </div>
     </div>
+    
 </template>
 
 <script>
